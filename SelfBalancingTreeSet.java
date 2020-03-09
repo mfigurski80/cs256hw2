@@ -3,4 +3,8 @@ public class SelfBalancingTreeSet<K> extends TreeSet<K> {
     protected void rebalanceInsert(Position<K> p){}
     protected void rebalanceDelete(Position<K> p){}
     protected void rebalanceAccess(Position<K> p){}
+
+    public static void main(String[] args) {
+        System.out.println("SelfBalancingTreeSet");
+    }
 }

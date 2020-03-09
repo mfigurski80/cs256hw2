@@ -1,6 +1,6 @@
 import java.util.Comparator;
 import java.util.ArrayList;
-public class TreeSet<K> implements Set<K> {
+public class TreeSet<K> implements Set<K>, PriorityQueue<K> {
     protected LinkedBinaryTree<K> tree = new LinkedBinaryTree<>();
     private Comparator<K> comp;
 
@@ -117,28 +117,32 @@ public class TreeSet<K> implements Set<K> {
     protected void rebalanceDelete(Position<K> p){}
     protected void rebalanceAccess(Position<K> p){}
 
-	public ArrayList<K> inOrder(){
-		ArrayList<K> list = new ArrayList<>();
-		placeInOrder(list, root());
-		return list;
-	}
-	
-	protected void placeInOrder(ArrayList<K> output, Position<K> node){
-		if (!isExternal(left(node))){
-			placeInOrder(output, left(node));
-		}
-		output.add(node.getElement());
-		if (!isExternal(right(node))){
-			placeInOrder(output, right(node));
-		}
-	}
+    public ArrayList<K> inOrder(){
+        ArrayList<K> list = new ArrayList<>();
+        placeInOrder(list, root());
+        return list;
+    }
+
+    protected void placeInOrder(ArrayList<K> output, Position<K> node){
+        if (!isExternal(left(node))){
+            placeInOrder(output, left(node));
+        }
+        output.add(node.getElement());
+        if (!isExternal(right(node))){
+            placeInOrder(output, right(node));
+        }
+    }
 
     /*
-    public K min(){}
-    public K removeMin(){}
-    public void insert(K key){}
-    public boolean isEmpty(){}
-    *
     * your implementation goes here
     */
+    public K min() {return treeMin(root()).getElement();}
+    public K removeMin() {
+        Position<K> min = treeMin(root());
+        remove(min);
+        return min.getElement();
+    }
+    public void insert(K key) {put(key);}
+    public boolean isEmpty() {return (tree.size() == 0);}
+
 }
