@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class TreeRotator {
 
@@ -10,10 +9,10 @@ public class TreeRotator {
         TreeSet<Integer> ts2 = new TreeSet<>();
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < 6; i++) list.add(i);
-        Collections.shuffle(list, new Random(10));
+        Collections.shuffle(list);
         for (Integer in : list) ts1.put(in);
         LinkedBinaryTree<Integer> tree1 = (LinkedBinaryTree<Integer>)ts1.getTree();
-        Collections.shuffle(list, new Random(15));
+        Collections.shuffle(list);
         for (Integer in : list) ts2.put(in);
         LinkedBinaryTree<Integer> tree2 = (LinkedBinaryTree<Integer>)ts2.getTree();
 
