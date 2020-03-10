@@ -23,3 +23,25 @@ children, means we're going to first move all nodes and then iterate down all
 of them, giving us that **O(B) = (2n)**.
 
 In summation, our problem becomes **O(A) = O(5n) = O(n)**, which is linear time.
+
+# Tree Sorts:
+
+When I run the demonstrative TreeSorter test code, I get the following output:
+```
+TreeSet RemoveMin sort took:                   3279ms
+TreeSet InOrderTraversal sort took:            2820ms
+BalancingTreeSet RemoveMin sort took:          9325ms
+BalancingTreeSet InOrderTraversal sort took:   8451ms
+```
+
+A noticeable difference is that remove-min sorting took longer than the in-order
+traversal of the same tree. This is likely because, with remove-min, the program
+would need to iterate down the branches every time to find the min, while
+in-order traversal would be able to simply look for parents or right-children
+of it's 'current' node. There's a pre-existing point of reference.
+
+Another noticeable difference is that the generic `TreeSet` class took less time
+than the `SelfBalancingTreeSet` class. This is likely because re-balancing is a
+costly procedure within Splay Trees, O(n-1) worst case, due to the potential
+necessity of transferring all children to the other side if only extreme numbers
+are being inserted or requested, which is also the case with our sort.

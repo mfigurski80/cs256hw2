@@ -137,12 +137,8 @@ public class TreeSet<K> implements Set<K>, PriorityQueue<K> {
     * your implementation goes here
     */
     public K min() {return treeMin(root()).getElement();}
-    public K removeMin() {
-        Position<K> min = treeMin(root());
-        remove(min);
-        return min.getElement();
-    }
+    public K removeMin() {return remove(min());}
     public void insert(K key) {put(key);}
-    public boolean isEmpty() {return (tree.size() == 0);}
+    public boolean isEmpty() {return (size() == 0);}
 
 }
